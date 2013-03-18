@@ -1,11 +1,12 @@
 package javatools;
 
 import java.nio.charset.Charset;
+import java.util.Arrays;
 import java.util.Hashtable;
 
 public class Tools {
-	
-	public static final Charset ASCII = Charset.forName("US-ASCII"); 
+
+	public static final Charset ASCII = Charset.forName("US-ASCII");
 
 	public static String bytes2Hex(byte[] bytes) {
 		StringBuilder stringBuilder = new StringBuilder();
@@ -31,6 +32,14 @@ public class Tools {
 		return str;
 	}
 
+	public static String string2Printable(String s) {
+		StringBuilder sb = new StringBuilder((int) (s.length() * 1.5));
+		for (byte b : s.getBytes(Tools.ASCII)) {
+			sb.append(char2Printable((char) b));
+		}
+		return sb.toString();
+	}
+
 	public static Hashtable<Byte, Integer> distribution(byte[] bytes) {
 		Hashtable<Byte, Integer> distribution = new Hashtable<Byte, Integer>();
 		for (byte b : bytes) {
@@ -45,7 +54,7 @@ public class Tools {
 	public static int linearSearch(byte[] largeArray, byte[] subArray) {
 		return linearSearch(largeArray, subArray, 0);
 	}
-	
+
 	public static int linearSearch(byte[] largeArray, byte[] subArray, int startIndex) {
 		if (subArray.length == 0) {
 			return 0;
@@ -53,7 +62,7 @@ public class Tools {
 		if (largeArray.length < startIndex + subArray.length) {
 			return -1;
 		}
-		
+
 		int limit = largeArray.length - subArray.length + 1;
 		for (int i = startIndex; i < limit; i++) {
 			if (largeArray[i] == subArray[0]) {

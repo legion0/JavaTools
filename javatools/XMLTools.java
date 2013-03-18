@@ -21,7 +21,7 @@ public class XMLTools {
 	public static void prettyPrintXML(Document doc, OutputStream out) {
 		try {
 			DOMImplementationRegistry registry = DOMImplementationRegistry.newInstance();
-			DOMImplementationLS impl = (DOMImplementationLS)registry.getDOMImplementation("LS");
+			DOMImplementationLS impl = (DOMImplementationLS) registry.getDOMImplementation("LS");
 			LSSerializer writer = impl.createLSSerializer();
 			writer.getDomConfig().setParameter("format-pretty-print", Boolean.TRUE);
 			LSOutput output = impl.createLSOutput();
@@ -33,7 +33,7 @@ public class XMLTools {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void prettyPrintXML2(Document doc, OutputStream out) {
 		try {
 			TransformerFactory transfac = TransformerFactory.newInstance();
