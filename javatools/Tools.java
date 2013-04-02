@@ -1,7 +1,6 @@
 package javatools;
 
 import java.nio.charset.Charset;
-import java.util.Arrays;
 import java.util.Hashtable;
 
 public class Tools {
@@ -11,10 +10,12 @@ public class Tools {
 	public static String bytes2Hex(byte[] bytes) {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.ensureCapacity(bytes.length * 3);
-		for (byte b : bytes)
+		for (byte b : bytes) {
 			stringBuilder.append(byte2Hex(b) + " ");
-		if (stringBuilder.length() > 0)
+		}
+		if (stringBuilder.length() > 0) {
 			stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+		}
 		return stringBuilder.toString();
 	}
 
@@ -45,8 +46,9 @@ public class Tools {
 		for (byte b : bytes) {
 			if (distribution.containsKey(b)) {
 				distribution.put(b, distribution.get(b) + 1);
-			} else
+			} else {
 				distribution.put(b, 1);
+			}
 		}
 		return distribution;
 	}
